@@ -17,9 +17,9 @@ RUN chmod +x /*.sh
 # Expose environment variables
 ENV DB_HOST **LinkMe**
 ENV DB_PORT **LinkMe**
-ENV DB_NAME wordpress
-ENV DB_USER admin
-ENV DB_PASS **ChangeMe**
+ENV DATA_DB_NAME **LinkMe**
+ENV DATA_DB_USER **LinkMe**
+ENV DATA_DB_PASS **LinkMe**
 
 EXPOSE 80
 VOLUME ["/app/wp-content"]
