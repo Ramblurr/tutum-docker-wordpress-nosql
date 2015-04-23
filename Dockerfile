@@ -13,6 +13,7 @@ RUN apt-get update && \
     a2enmod rewrite
 
 ADD wp-config.php /app/wp-config.php
+ADD wordpress.conf /etc/apache2/sites-enabled/000-default.conf
 ADD run_wordpress.sh /run_wordpress.sh
 RUN chmod +x /*.sh
 
