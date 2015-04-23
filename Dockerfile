@@ -8,10 +8,11 @@ RUN apt-get update && \
     rm -rf /app && \
     curl -0L http://wordpress.org/wordpress-4.1.1.tar.gz | tar zxv && \
     mv /wordpress /app && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* \
+    a2enmod rewrite
 
 ADD wp-config.php /app/wp-config.php
-ADD run.sh /run.sh
+ADD run_wordpress.sh /run_wordpress.sh
 RUN chmod +x /*.sh
 
 # Expose environment variables
@@ -23,4 +24,4 @@ ENV DATA_DB_PASS **LinkMe**
 
 EXPOSE 80
 VOLUME ["/app/wp-content"]
-CMD ["/run.sh"]
+CMD ["/run_wordpress.sh"]

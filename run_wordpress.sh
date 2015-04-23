@@ -1,7 +1,10 @@
 #!/bin/bash
 
-chown www-data:www-data /app -R
-chmod -R 777 /app/wp-content
+chown -R root:www-data /app
+chmod -R 650 /app
+chmod -R 770 /app/wp-content/
+chmod -R 660 /app/.htaccess
+chmod    660 /app/wp-config.php
 
 DB_HOST=${DB_PORT_3306_TCP_ADDR:-${DB_HOST}}
 DB_HOST=${DB_1_PORT_3306_TCP_ADDR:-${DB_HOST}}
@@ -66,6 +69,4 @@ else
 fi
 
 touch /.mysql_db_created
-
-source /etc/apache2/envvars
-exec apache2 -D FOREGROUND
+exec /run.sh
