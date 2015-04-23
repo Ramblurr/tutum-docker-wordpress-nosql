@@ -8,7 +8,8 @@ RUN apt-get update && \
     rm -rf /app && \
     curl -0L https://wordpress.org/latest.tar.gz | tar zxv && \
     mv /wordpress /app && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/* && \
+    chown -R www-data:www-data /var/www && \
     a2enmod rewrite
 
 ADD wp-config.php /app/wp-config.php
