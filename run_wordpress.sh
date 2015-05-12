@@ -3,7 +3,11 @@
 chown -R root:www-data /app
 chmod -R 775 /app
 chmod -R 770 /app/wp-content/
-chmod    640 /app/.htaccess
+
+if [ -f /app/.htaccess]; then
+    chmod    640 /app/.htaccess
+fi
+
 chmod    660 /app/wp-config.php
 
 DB_HOST=${DB_PORT_3306_TCP_ADDR:-${DB_HOST}}
@@ -59,7 +63,7 @@ if [[ $DB_CONNECTABLE -eq 0 ]]; then
                 exit RET
             fi
         fi
-        echo "=> Done!"    
+        echo "=> Done!"
     else
         echo "=> Skipped creation of database $DATA_DB_NAME – it already exists."
     fi
