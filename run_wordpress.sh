@@ -4,7 +4,7 @@ chown -R root:www-data /app
 chmod -R 775 /app
 chmod -R 770 /app/wp-content/
 
-if [ -f /app/.htaccess]; then
+if [ -f /app/.htaccess ]; then
     chmod    640 /app/.htaccess
 fi
 
